@@ -1,3 +1,3 @@
-{
+strings = {
 	"window-title": "Edging" 
 }

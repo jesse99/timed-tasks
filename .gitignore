@@ -1,5 +1,7 @@
 .DS_Store
 .todo-back-color.xml
 .Makefile-back-color.xml
-strings.json
-private-strings.json
+.private-strings-back-color.xml
+.public-strings-back-color.xml
+strings.js
+private-strings.js
