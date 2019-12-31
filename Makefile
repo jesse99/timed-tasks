@@ -4,11 +4,11 @@ all: private
 
 .PHONY: private
 private: 
-	cp private-strings.js strings.js
+	cp private-data.js data.js
 	open index.html
 
 .PHONY: public
 public: 
-	cp public-strings.js strings.js
+	cp public-data.js data.js
 	open index.html
 	
