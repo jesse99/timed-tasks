@@ -5,14 +5,21 @@
 \deftab720
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
 
-\f0\fs48 \cf2 \'95\'a0Add a simple tasks.json with calisthenics\
-	- just hard-code the logic\
-	- use a strings.json file\
-	- if strings file is missing then use the key\
-\'95\'a0Use json and javascript to populate the front page\
-	- tasks.json could be in the scripts directory\
-	- or maybe throw it in a data directory?\
-	- setup local server: https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server\
+\f0\fs48 \cf2 \'95 Start working on the logic:\
+	- add a Makefile\
+		` have private and public make targets\
+		` targets copy one of the strings files to strings.json\
+	- use the strings file to set the title\
+		` if strings file is missing then use the key\
+		` put this in data directory?\
+		` local server: https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server\
+	- add some labels for one task\
+	- get a progress bar working\
+	- alternate rest with tasks\
+	- get different phase 1 tasks working\
+	- support phase 2\
+	- support phase 3\
+	- support phase 4\
 \'95\'a0Figure out tooling:\
 	- typescript seems like way over kill\
 	- bootstrap\
@@ -30,7 +37,7 @@
 \f1\fs24 \cf3 \expnd0\expndtw0\kerning0
 \ul \ulc3 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like}}\
 \'95\'a0Work on the real version:\
-	- private-tasks.json would be encrypted\
+	- upload an encrypted version of the strings file\
 \'95\'a0Use some sort of transition between steps?\
 \'95 Figure out how where to host this.\
 \'95\'a0Make sure mobile is ok\

@@ -1,3 +1,4 @@
+.DS_Store
 .todo-back-color.xml
 strings.json
-
+private-strings.json
