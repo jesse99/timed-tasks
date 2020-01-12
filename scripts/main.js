@@ -32,22 +32,34 @@ function choose(from) {
 	}
 }
 
-function run_tasks() {
+function update_progress(interval, value) {
+	var progress = document.querySelector("#progress");
+	if (value < 100) {
+		progress.value = value;
+		setTimeout(update_progress, interval, interval, value+1);
+	} else {
+		progress.value = 0;
+		start_task();
+	}
+}
+
+function start_task() {
 	let entry = choose(tasks);
 	var task = document.querySelector("#task");
 	task.textContent = entry.title;
 
-	setTimeout(run_tasks, entry.secs*1000/speedup);
+	let duration = entry.secs*1000/speedup;
+	let interval = duration/100;
+	setTimeout(update_progress, interval, interval, 0);
 }
 
 window.addEventListener("DOMContentLoaded", function(){
 	// selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
 	var title = document.querySelector("title");
 	title.textContent = lookup("window-title");
-
-	setTimeout(run_tasks, 1);
+	
+	setTimeout(start_task, 1);
 	// XXX
-	// use a progress bar while waiting
 	// alternate between tasks and rest
 	// add speedup to the data file
 });

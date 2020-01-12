@@ -3,5 +3,6 @@
 .Makefile-back-color.xml
 .private-data-back-color.xml
 .public-data-back-color.xml
+.mimsy.rtf
 data.js
 private-data.js
