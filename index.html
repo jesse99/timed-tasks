@@ -1,17 +1,22 @@
-<!-- XXX need to make this html5 -->
-<!-- XXX for html5 it's recommended that text/javascript be omitted -->
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8"/>
 		<title>Hello World</title>
-		<script type="text/javascript" src="data.js"></script>
-		<script type="text/javascript" src="scripts/main.js"></script>
+		<script src="data.js"></script>
+		<script src="scripts/main.js"></script>
 	</head>
 	<body>
 		<h2 id="title">title</h2>
-		<p id="label">task label</p>
-		<progress id="progress" max=100 value=0></progress>
-		<p id="sublabel">a sublabel</p>
+
+		<div id="intro">
+			<button type="button" id="start">Start</button>
+		</div>
+
+		<div id="game">
+			<p id="label">task label</p>
+			<progress id="progress" max=100 value=0></progress>
+			<p id="sublabel">a sublabel</p>
+		</div>
 	</body>
 </html>

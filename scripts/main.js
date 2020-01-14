@@ -47,6 +47,7 @@ function begin(context) {
 	}
 	
 	if (context.phase < phases.length-2) {
+		// game phases
 		let entry = context.is_action ? choose(tasks) : choose(rest);
 		var label = document.querySelector("#label");
 		label.textContent = entry.title;
@@ -60,6 +61,7 @@ function begin(context) {
 		setTimeout(update_progress, context.interval, context);
 	
 	} else if (context.phase == phases.length-1) {
+		// player finished winning
 		var sublabel = document.querySelector("#sublabel");
 		sublabel.textContent = phases[context.phase].sublabel;
 
@@ -68,7 +70,8 @@ function begin(context) {
 		label.textContent = "";
 	
 		var x = Math.random();
-		if (x <= settings.prob) {		
+		if (x <= settings.prob) {
+			// player won		
 			var sublabel = document.querySelector("#sublabel");
 			sublabel.textContent = phases[context.phase].sublabel;
 
@@ -80,10 +83,28 @@ function begin(context) {
 			setTimeout(update_progress, context.interval, context);
 			
 		} else {
+			// player lost
 			var sublabel = document.querySelector("#sublabel");
 			sublabel.textContent = settings.lost;
 		}
 	}
+}
+
+function start_game() {
+	var section = document.querySelector("#game");
+	section.hidden = false;
+
+	section = document.querySelector("#intro");
+	section.hidden = true;
+
+	var label = document.querySelector("#label");
+	var sublabel = document.querySelector("#sublabel");
+	label.textContent = phases[0].label;
+	sublabel.textContent = phases[0].sublabel;
+
+	let duration = phases[0].secs*1000*settings.speed;
+	let context = {phase: 0, start: new Date().getTime(), is_action: true, interval: duration/100, value: 0};
+	setTimeout(update_progress, context.interval, context);
 }
 
 window.addEventListener("DOMContentLoaded", function(){
@@ -94,12 +115,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	var title = document.querySelector("#title");
 	title.textContent = settings.title;
 	
-	var label = document.querySelector("#label");
-	var sublabel = document.querySelector("#sublabel");
-	label.textContent = phases[0].label;
-	sublabel.textContent = phases[0].sublabel;
+	var section = document.querySelector("#game");
+	section.hidden = true;
 
-	let duration = phases[0].secs*1000*settings.speed;
-	let context = {phase: 0, start: new Date().getTime(), is_action: true, interval: duration/100, value: 0};
-	setTimeout(update_progress, context.interval, context);
+	var button = document.querySelector("#start");
+	button.addEventListener('click', start_game);
 });
