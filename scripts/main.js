@@ -1,4 +1,5 @@
 var game_duration = undefined;
+var win_probability = undefined;
 
 // Returns a number in [min, max).
 function random_int(min, max) {
@@ -82,7 +83,9 @@ function begin(context) {
 		label.textContent = "";
 	
 		var x = Math.random();
-		if (x <= settings.prob) {
+			console.log("x " + x);
+			console.log("win_probability " + win_probability);
+		if (x <= win_probability) {
 			// player won		
 			var sublabel = document.querySelector("#sublabel");
 			sublabel.textContent = phases[context.phase].sublabel;
@@ -111,8 +114,10 @@ function start_game() {
 	section.hidden = true;
 	
 	var picker = document.getElementById("duration");
-	var value = picker.options[picker.selectedIndex].value;
 	game_duration = durations[picker.selectedIndex];
+
+	picker = document.getElementById("probability");
+	win_probability = probability[picker.selectedIndex].percent/100;
 
 	var label = document.querySelector("#label");
 	var sublabel = document.querySelector("#sublabel");
@@ -140,6 +145,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	for (let i = 0; i < picker.length; i++) {
 		var option = picker.options[i];
 		option.textContent = durations[i].title;	
+	}
+	
+	picker = document.getElementById("probability");
+	for (let i = 0; i < picker.length; i++) {
+		var option = picker.options[i];
+		option.textContent = probability[i].title;	
 	}
 	
 	var section = document.querySelector("#game");
