@@ -1,3 +1,5 @@
+'use strict';
+
 var game_duration = undefined;
 var win_probability = undefined;
 
