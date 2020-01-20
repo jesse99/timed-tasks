@@ -31,13 +31,12 @@ function phase_secs(context) {
 }
 
 function update_progress(context) {
-	var progress = document.querySelector("#progress");
 	if (context.value < 100) {
 		context.value += 1;
-		progress.value = context.value;
+		$(".progress-bar").css("width", context.value + "%");
 		setTimeout(update_progress, context.interval, context);
 	} else {
-		progress.value = 0;
+		$(".progress-bar").css("width", "0%");
 		context.is_action = !context.is_action;
 		if (context.phase == 0) {
 			context.phase = 1;
