@@ -1,14 +1,82 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;}
-{\colortbl;\red255\green255\blue255;\red2\green2\blue2;\red0\green0\blue233;}
-{\*\expandedcolortbl;;\csgenericrgb\c784\c784\c784;\cssrgb\c0\c0\c93333;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Italic;\f4\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red2\green2\blue2;\red0\green72\blue255;\red0\green0\blue0;
+\red38\green38\blue38;\red104\green0\blue254;\red10\green82\blue135;\red0\green0\blue0;\red18\green139\blue2;
+\red240\green0\blue31;\red15\green114\blue1;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\csgenericrgb\c784\c784\c784;\csgenericrgb\c0\c28235\c100000;\csgray\c0;
+\cssrgb\c20000\c20000\c20000;\csgenericrgb\c40784\c0\c99608;\cssrgb\c0\c40000\c60000;\cssrgb\c0\c0\c0;\cssrgb\c0\c60000\c0;
+\csgenericrgb\c94118\c0\c12157;\cssrgb\c0\c50980\c0;\cssrgb\c0\c0\c93333;}
 \deftab720
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
 
 \f0\fs48 \cf2  local server: https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server\
 \
+\pard\pardeftab818\pardirnatural\partightenfactor0
+
+\f1\b\fs34 \cf3 progress 
+\f2\b0 \cf4 \{\
+\pard\pardeftab720\sl397\partightenfactor0
+\expnd0\expndtw0\kerning0
+\'a0\'a0\cf6 background-color: \cf4 #f3f3f3;\
+\'a0\'a0\cf6 border: \cf4 0;\
+\'a0\'a0\cf6 height: \cf4 18px;\
+\'a0\'a0\cf6 border-radius: \cf4 9px;\
+\pard\pardeftab818\pardirnatural\partightenfactor0
+\kerning1\expnd0\expndtw0 \}\
+
+\f1\b \cf3 \
+\pard\pardeftab720\sl397\partightenfactor0
+\cf3 \expnd0\expndtw0\kerning0
+progress::-webkit-progress-bar 
+\f2\b0 \cf4 \{\
+\'a0\'a0
+\f3\i \cf10 /* style rules */
+\f2\i0 \cf4 \
+\pard\pardeftab720\sl397\partightenfactor0
+\}\
+\pard\pardeftab720\sl397\partightenfactor0
+
+\f1\b \cf3 progress::-webkit-progress-value 
+\f2\b0 \cf4 \{\
+\'a0\'a0
+\f3\i \cf10 /* style rules */
+\f2\i0 \cf4 \
+\pard\pardeftab720\sl397\partightenfactor0
+\}\
+\pard\pardeftab720\sl397\partightenfactor0
+
+\f1\b \cf3 progress::-moz-progress-bar 
+\f2\b0 \cf4 \{\
+\'a0\'a0
+\f3\i \cf10 /* style rules */
+\f2\i0 \cf4 \
+\pard\pardeftab720\sl397\partightenfactor0
+\}\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs48 \cf2 \kerning1\expnd0\expndtw0 \
+\
+\pard\pardeftab818\pardirnatural\partightenfactor0
+
+\f1\b\fs34 \cf3 progress 
+\f2\b0 \cf4 \{\
+	\cf6 webkit-appearance: \cf4 none;\
+\}\
+\
+::-webkit-progress-bar \{\
+	\cf6 height: \cf4 50px;\
+\}\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs48 \cf2 \
+\
 \'95 Do some basic css:\
-	- make stuff bigger\
+	- probably want to try bootstrap\
+	- make pickers and button larger?\
+		https://catalin.red/making-html-dropdowns-not-suck/\
+	- progress bar should be a lot larger\
+	- change progress bar accoringing to action/phase?\
 	- maybe center stuff\
 \'95\'a0Makefile should always lint the javascript\
 \'95\'a0Make sure page refresh restarts the game\
@@ -16,22 +84,24 @@
 \'95\'a0Work on look:\
 	- bootstrap\
 	- {\field{\*\fldinst{HYPERLINK "https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/The_native_form_widgets"}}{\fldrslt 
-\f1\fs24 \cf3 \expnd0\expndtw0\kerning0
-\ul \ulc3 https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/The_native_form_widgets}}\
+\f4\fs24 \cf12 \expnd0\expndtw0\kerning0
+\ul \ulc12 https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/The_native_form_widgets}}\
 	- progress bars: {\field{\*\fldinst{HYPERLINK "https://www.lambdatest.com/blog/how-to-create-a-cross-browser-compatible-html-progress-bar/"}}{\fldrslt 
-\f1\fs24 \cf3 \expnd0\expndtw0\kerning0
-\ul \ulc3 https://www.lambdatest.com/blog/how-to-create-a-cross-browser-compatible-html-progress-bar/}}\
+\f4\fs24 \cf12 \expnd0\expndtw0\kerning0
+\ul \ulc12 https://www.lambdatest.com/blog/how-to-create-a-cross-browser-compatible-html-progress-bar/}}\
 	- bootstrap bars: {\field{\*\fldinst{HYPERLINK "https://mdbootstrap.com/docs/jquery/components/progress-bar/"}}{\fldrslt 
-\f1\fs24 \cf3 \expnd0\expndtw0\kerning0
-\ul \ulc3 https://mdbootstrap.com/docs/jquery/components/progress-bar/}}\
+\f4\fs24 \cf12 \expnd0\expndtw0\kerning0
+\ul \ulc12 https://mdbootstrap.com/docs/jquery/components/progress-bar/}}\
 	- fonts: http://www.google.com/fonts\
 		{\field{\*\fldinst{HYPERLINK "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like"}}{\fldrslt 
-\f1\fs24 \cf3 \expnd0\expndtw0\kerning0
-\ul \ulc3 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like}}\
+\f4\fs24 \cf12 \expnd0\expndtw0\kerning0
+\ul \ulc12 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like}}\
 	- may want to turn the background green when winning\
 	- and red if lost\
 \'95\'a0Work on the real version:\
 	- upload an encrypted version of the strings file\
+\'95\'a0Send results to Mistress?\
+	- maybe a consent button at the end?\
 \'95\'a0Use some sort of transition between steps?\
 \'95 Figure out how where to host this.\
 \'95\'a0Make sure mobile is ok\
