@@ -1,4 +1,5 @@
-'use strict';
+/* eslint no-undef: "off" */
+"use strict";
 
 var game_duration = undefined;
 var win_probability = undefined;
@@ -13,12 +14,12 @@ function random_int(min, max) {
 function choose(from) {
 	// bit silly to compute this every time but length is small enough that it's perfectly fine
 	let total_weight = from.reduce(function(sum, entry) {
-		return sum + entry.weight}, 0);
+		return sum + entry.weight;}, 0);
 	
-	var current_weight = 0;
-	while (true) {
+	let current_weight = 0;
+	for (;;) {
 		let i = random_int(0, from.length);
-		console.assert(from[i].weight > 0);
+		//console.assert(from[i].weight > 0);
 		current_weight += from[i].weight;
 		if (current_weight >= total_weight) {
 			return from[i];
@@ -45,7 +46,7 @@ function update_progress(context) {
 		}
 		if (context.phase == 0) {
 			context.phase = 1;
-			console.log("now on phase " + context.phase);
+			//console.log("now on phase " + context.phase);
 			context.start = new Date().getTime();
 		}
 		begin(context);
@@ -54,24 +55,24 @@ function update_progress(context) {
 
 function begin(context) {
 	let elapsed = (new Date().getTime() - context.start)/1000;
-	var duration = phase_secs(context);
+	let duration = phase_secs(context);
 	let can_proceed = ((context.phase == 1 || context.phase == 2) && context.is_action) || // i.e. we were resting
-	                  ((context.phase != 1 && context.phase != 2));
-	let suffix = context.is_action ? " was resting" : "";
-	console.log("   elapsed=" + elapsed + " duration=" + duration + " can_proceed=" + can_proceed + suffix);
+					((context.phase != 1 && context.phase != 2));
+	//let suffix = context.is_action ? " was resting" : "";
+	//console.log("   elapsed=" + elapsed + " duration=" + duration + " can_proceed=" + can_proceed + suffix);
 	if (elapsed >= duration && can_proceed) {
 		context.phase += 1;
-		console.log("now on phase " + context.phase);
+		//console.log("now on phase " + context.phase);
 		context.start = new Date().getTime();
 	}
 	
 	if (context.phase < phases.length-2) {
 		// game phases
 		let entry = context.is_action ? choose(tasks) : choose(rest);
-		var label = document.querySelector("#label");
+		let label = document.querySelector("#label");
 		label.textContent = entry.title;
 	
-		var sublabel = document.querySelector("#sublabel");
+		let sublabel = document.querySelector("#sublabel");
 		sublabel.textContent = context.is_action ? phases[context.phase].sublabel : "";
 	
 		duration = entry.secs*1000*phases[context.phase].speed;
@@ -81,20 +82,20 @@ function begin(context) {
 	
 	} else if (context.phase == phases.length-1) {
 		// player finished winning
-		var sublabel = document.querySelector("#sublabel");
-		sublabel.textContent = phases[context.phase].sublabel;
+		let slabel = document.querySelector("#sublabel");
+		slabel.textContent = phases[context.phase].sublabel;
 
 	} else {
-		var label = document.querySelector("#label");
-		label.textContent = "";
+		let lbl = document.querySelector("#label");
+		lbl.textContent = "";
 	
-		var x = Math.random();
-			console.log("x " + x);
-			console.log("win_probability " + win_probability);
+		let x = Math.random();
+		//console.log("x " + x);
+		//console.log("win_probability " + win_probability);
 		if (x <= win_probability) {
 			// player won		
-			var sublabel = document.querySelector("#sublabel");
-			sublabel.textContent = phases[context.phase].sublabel;
+			let sublbl = document.querySelector("#sublabel");
+			sublbl.textContent = phases[context.phase].sublabel;
 
 			$(".progress-bar").attr("class", "progress-bar bg-success");
 
@@ -103,25 +104,25 @@ function begin(context) {
 			context.value = 0;
 
 			context.phase += 1;
-			console.log("now on phase " + context.phase);
+			//console.log("now on phase " + context.phase);
 			setTimeout(update_progress, context.interval, context);
 			
 		} else {
 			// player lost
-			var sublabel = document.querySelector("#sublabel");
-			sublabel.textContent = settings.lost;
+			let sublbl = document.querySelector("#sublabel");
+			sublbl.textContent = settings.lost;
 		}
 	}
 }
 
 function start_game() {
-	var section = document.querySelector("#game");
+	let section = document.querySelector("#game");
 	section.hidden = false;
 
 	section = document.querySelector("#intro");
 	section.hidden = true;
 	
-	var picker = document.getElementById("duration");
+	let picker = document.getElementById("duration");
 	game_duration = durations[picker.selectedIndex];
 
 	picker = document.getElementById("probability");
@@ -129,43 +130,43 @@ function start_game() {
 
 	$(".progress-bar").attr("class", "progress-bar bg-warning");
 
-	var label = document.querySelector("#label");
-	var sublabel = document.querySelector("#sublabel");
+	let label = document.querySelector("#label");
+	let sublabel = document.querySelector("#sublabel");
 	label.textContent = phases[0].label;
 	sublabel.textContent = phases[0].sublabel;
 
 	let context = {phase: 0, start: new Date().getTime(), is_action: true, interval: undefined, value: 0};
 	context.interval = phase_secs(context)*1000/100;
-	console.log("now on phase " + context.phase);
+	//console.log("now on phase " + context.phase);
 	setTimeout(update_progress, context.interval, context);
 }
 
 window.addEventListener("DOMContentLoaded", function(){
 	// selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
-	var wtitle = document.querySelector("title");
+	let wtitle = document.querySelector("title");
 	wtitle.textContent = settings.window_title;
 	
-	var title = document.querySelector("#title");
+	let title = document.querySelector("#title");
 	title.textContent = settings.title;
 	
-	var instructions = document.querySelector("#instructions");
+	let instructions = document.querySelector("#instructions");
 	instructions.textContent = settings.instructions;
 	
-	var picker = document.getElementById("duration");
+	let picker = document.getElementById("duration");
 	for (let i = 0; i < picker.length; i++) {
-		var option = picker.options[i];
+		let option = picker.options[i];
 		option.textContent = durations[i].title;	
 	}
 	
 	picker = document.getElementById("probability");
 	for (let i = 0; i < picker.length; i++) {
-		var option = picker.options[i];
+		let option = picker.options[i];
 		option.textContent = probability[i].title;	
 	}
 	
-	var section = document.querySelector("#game");
+	let section = document.querySelector("#game");
 	section.hidden = true;
 
-	var button = document.querySelector("#start");
-	button.addEventListener('click', start_game);
+	let button = document.querySelector("#start");
+	button.addEventListener("click", start_game);
 });
