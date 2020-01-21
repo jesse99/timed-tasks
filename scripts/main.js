@@ -38,6 +38,11 @@ function update_progress(context) {
 	} else {
 		$(".progress-bar").css("width", "0%");
 		context.is_action = !context.is_action;
+		if (context.is_action) {
+			$(".progress-bar").attr("class", "progress-bar bg-warning");
+		} else {
+			$(".progress-bar").attr("class", "progress-bar bg-info");
+		}
 		if (context.phase == 0) {
 			context.phase = 1;
 			console.log("now on phase " + context.phase);
@@ -91,6 +96,8 @@ function begin(context) {
 			var sublabel = document.querySelector("#sublabel");
 			sublabel.textContent = phases[context.phase].sublabel;
 
+			$(".progress-bar").attr("class", "progress-bar bg-success");
+
 			duration = phase_secs(context)*1000*phases[context.phase].speed;
 			context.interval = duration/100;
 			context.value = 0;
@@ -119,6 +126,8 @@ function start_game() {
 
 	picker = document.getElementById("probability");
 	win_probability = probability[picker.selectedIndex].percent/100;
+
+	$(".progress-bar").attr("class", "progress-bar bg-warning");
 
 	var label = document.querySelector("#label");
 	var sublabel = document.querySelector("#sublabel");
