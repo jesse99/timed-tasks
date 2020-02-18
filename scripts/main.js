@@ -1,4 +1,5 @@
 /* eslint no-undef: "off" */
+/* eslint no-console: "warn" */
 "use strict";
 
 var game_duration = undefined;
@@ -99,7 +100,9 @@ function begin(context) {
 
 			$(".progress-bar").attr("class", "progress-bar bg-success");
 
-			duration = phase_secs(context)*1000*phases[context.phase].speed;
+			let secs = 5 + Math.random()*(phase_secs(context) - 5); 
+			console.log("win_secs " + secs);
+			duration = secs*1000*phases[context.phase].speed;
 			context.interval = duration/100;
 			context.value = 0;
 
