@@ -3,9 +3,12 @@
 .Makefile-back-color.xml
 .private-data-back-color.xml
 .public-data-back-color.xml
+.combine-back-color.xml
+.encrypt-back-color.xml
 .mimsy.rtf
 data.js
 private-data.js
+combined.html
 PortIndex
 PortIndex.quick
 tmp.js

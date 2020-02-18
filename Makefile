@@ -14,3 +14,7 @@ public:
 	@cp public-data.js data.js
 	@open index.html
 	
+.PHONY: package
+package: 
+	@python3 combine.py index.html private-data.js
+	@python3 encrypt.py combined.html
