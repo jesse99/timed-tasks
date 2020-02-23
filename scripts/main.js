@@ -146,6 +146,7 @@ function start_game() {
 
 window.addEventListener("DOMContentLoaded", function(){
 	// selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+	window.parent.document.title = settings.window_title;
 	let wtitle = document.querySelector("title");
 	wtitle.textContent = settings.window_title;
 	
