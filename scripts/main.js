@@ -69,7 +69,13 @@ function begin(context) {
 	
 	if (context.phase < phases.length-2) {
 		// game phases
-		let entry = context.is_action ? choose(tasks) : choose(rest);
+		let entry = undefined;
+		if (context.phase == 1 && !context.is_action) {
+			// use a fast rest for the very first one
+			entry = rest[1];
+		} else {
+			entry = context.is_action ? choose(tasks) : choose(rest);
+		}
 		let label = document.querySelector("#label");
 		label.textContent = entry.title;
 	
@@ -138,7 +144,12 @@ function start_game() {
 	label.textContent = phases[0].label;
 	sublabel.textContent = phases[0].sublabel;
 
-	let context = {phase: 0, start: new Date().getTime(), is_action: true, interval: undefined, value: 0};
+	let context = {
+		phase: 0, 						// used to index into durations
+		start: new Date().getTime(),	// time the current progress bar began
+		is_action: true, 				// true if this is a task (as opposed to rest)
+		interval: undefined,			// milliseconds to show progress bar
+		value: 0};						// current progress bar value (0 to 100)
 	context.interval = phase_secs(context)*1000/100;
 	//console.log("now on phase " + context.phase);
 	setTimeout(update_progress, context.interval, context);
