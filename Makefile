@@ -14,6 +14,7 @@ public:
 	@cp public-data.js data.js
 	@open index.html
 	
+# Uses https://www.maxlaumeister.com/pagecrypt/
 .PHONY: package
 package: 
 	@python3 combine.py index.html private-data.js
