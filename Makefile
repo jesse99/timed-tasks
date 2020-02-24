@@ -19,3 +19,4 @@ public:
 package: 
 	@python3 combine.py index.html private-data.js
 	@python3 encrypt.py combined.html
+
