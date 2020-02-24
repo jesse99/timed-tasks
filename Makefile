@@ -14,7 +14,14 @@ public:
 	@cp public-data.js data.js
 	@open index.html
 	
-# Uses https://www.maxlaumeister.com/pagecrypt/
+# Encrypts the private data file so that it can be uploaded. Descrypt it using:
+# 	openssl enc -d -aes-256-cbc -in private-data.js.enc > private-data.js
+.PHONY: encrypt
+encrypt: 
+	@openssl enc -aes-256-cbc -salt -in private-data.js -out private-data.js.enc
+
+# Uses https://www.maxlaumeister.com/pagecrypt to create a password protected all
+# in one file that can be uploaded to a web hosting service.
 .PHONY: package
 package: 
 	@python3 combine.py index.html private-data.js
