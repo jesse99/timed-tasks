@@ -165,7 +165,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	title.textContent = settings.title;
 	
 	let instructions = document.querySelector("#instructions");
-	instructions.textContent = settings.instructions;
+	instructions.innerHTML = settings.instructions;
 	
 	let picker = document.getElementById("duration");
 	for (let i = 0; i < picker.length; i++) {
