@@ -31,5 +31,5 @@ package:
 	@cp combined-protected.html web-site/index.html
 	@cp -R scripts web-site
 	@cp -R styles web-site
-	@tar -zcvf web-site.tar.gz web-site
+	@scp -P 65002 -r web-site/* u506882013@213.190.6.43:public_html/
 
