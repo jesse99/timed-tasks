@@ -26,4 +26,10 @@ encrypt:
 package: 
 	@python3 combine.py index.html private-data.js
 	@python3 encrypt.py combined.html
+	@rm -rf web-site
+	@mkdir web-site
+	@cp combined-protected.html web-site/index.html
+	@cp -R scripts web-site
+	@cp -R styles web-site
+	@tar -zcvf web-site.tar.gz web-site
 
