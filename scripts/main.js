@@ -45,16 +45,18 @@ function update_progress(context) {
 		} else {
 			$(".progress-bar").attr("class", "progress-bar bg-info");
 		}
+		var started_phase1 = false;
 		if (context.phase == 0) {
 			context.phase = 1;
 			//console.log("now on phase " + context.phase);
 			context.start = new Date().getTime();
+			started_phase1 = true;
 		}
-		begin(context);
+		begin(context, started_phase1);
 	}
 }
 
-function begin(context) {
+function begin(context, started_phase1) {
 	let elapsed = (new Date().getTime() - context.start)/1000;
 	let duration = phase_secs(context);
 	let can_proceed = ((context.phase == 1 || context.phase == 2) && context.is_action) || // i.e. we were resting
@@ -70,7 +72,7 @@ function begin(context) {
 	if (context.phase < phases.length-2) {
 		// game phases
 		let entry = undefined;
-		if (context.phase == 1 && !context.is_action) {
+		if (started_phase1) {
 			// use a fast rest for the very first one
 			entry = rest[1];
 		} else {
