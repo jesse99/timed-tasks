@@ -119,7 +119,8 @@ function begin(context) {
 		} else {
 			// player lost
 			let sublbl = document.querySelector("#sublabel");
-			sublbl.textContent = settings.lost;
+			let i = random_int(0, lost_text.length);
+			sublbl.textContent = lost_text[i];
 		}
 	}
 }
