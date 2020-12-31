@@ -22,6 +22,11 @@ encrypt:
 
 # Uses https://www.maxlaumeister.com/pagecrypt to create a password protected all
 # in one file that can be uploaded to a web hosting service.
+# TODO: 
+#    updating this tends to require that people clear the cache
+#    can use: <meta http-equiv="Cache-control" content="No-Cache">
+#    or maybe change an etag?
+#    or just need to wait a few mins for hosting service to update?
 .PHONY: package
 package: 
 	@python3 combine.py index.html private-data.js
@@ -33,4 +38,4 @@ package:
 	@cp -R styles web-site
 	@cp -R images web-site
 	@scp -P 65002 -r web-site/* u506882013@213.190.6.43:public_html/
-
+	@echo 'record the password in private-data.js'
