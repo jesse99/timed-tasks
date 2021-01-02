@@ -143,6 +143,8 @@ function begin(context, started_phase1) {
 			let sublbl = document.querySelector("#sublabel");
 			let i = random_int(0, lost_text.length);
 			sublbl.textContent = lost_text[i];
+		
+			$("#picture").attr("src", "lost-pics/one.jpg");
 		}
 	}
 }
