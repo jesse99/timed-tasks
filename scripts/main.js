@@ -4,6 +4,7 @@
 
 var game_duration = undefined;
 var win_probability = undefined;
+var pic_index = 0;
 
 // Returns a number in [min, max).
 function random_int(min, max) {
@@ -28,8 +29,20 @@ function choose(from) {
 	}
 }
 
+function shuffle(array) {
+	for (let i = 0; i < array.length - 2; i++) {
+		let j = random_int(i, array.length);
+	
+		let tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+	}
+}
+
+// To speed the game up make the 60 a much smaller value.
 function phase_secs(context) {
-	return 60*game_duration.mins[context.phase];
+	return 3*game_duration.mins[context.phase];	// TOODO: revert this
+//	return 60*game_duration.mins[context.phase];
 }
 
 function update_progress(context) {
@@ -54,6 +67,12 @@ function update_progress(context) {
 		}
 		begin(context, started_phase1);
 	}
+}
+
+function random_pic() {
+	pic_index = (pic_index + 1) % pictures.length;
+	let path = pictures[pic_index];
+	$("#picture").attr("src", path);
 }
 
 function begin(context, started_phase1) {
@@ -83,6 +102,7 @@ function begin(context, started_phase1) {
 	
 		let sublabel = document.querySelector("#sublabel");
 		sublabel.textContent = context.is_action ? phases[context.phase].sublabel : "";
+		random_pic();
 	
 		duration = entry.secs*1000*phases[context.phase].speed;
 		context.interval = duration/100;
@@ -102,13 +122,13 @@ function begin(context, started_phase1) {
 		//console.log("x " + x);
 		//console.log("win_probability " + win_probability);
 		if (x <= win_probability) {
-			// player won		
+			// player won
 			let sublbl = document.querySelector("#sublabel");
 			sublbl.textContent = phases[context.phase].sublabel;
 
 			$(".progress-bar").attr("class", "progress-bar bg-success");
 
-			let secs = 5 + Math.random()*(phase_secs(context) - 5); 
+			let secs = 5 + Math.random()*(phase_secs(context) - 5);
 			console.log("win_secs " + secs);
 			duration = secs*1000*phases[context.phase].speed;
 			context.interval = duration/100;
@@ -146,6 +166,7 @@ function start_game() {
 	let sublabel = document.querySelector("#sublabel");
 	label.textContent = phases[0].label;
 	sublabel.textContent = phases[0].sublabel;
+	random_pic();
 
 	let context = {
 		phase: 0, 						// used to index into durations
@@ -160,6 +181,7 @@ function start_game() {
 
 window.addEventListener("DOMContentLoaded", function(){
 	// selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+	shuffle(pictures);
 	window.parent.document.title = settings.window_title;
 	let wtitle = document.querySelector("title");
 	wtitle.textContent = settings.window_title;
