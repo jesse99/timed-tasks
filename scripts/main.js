@@ -6,6 +6,9 @@ var game_duration = undefined;
 var win_probability = undefined;
 var pic_index = 0;
 
+// Make this larger to speed the game up.
+const step_by = 1;
+
 // Returns a number in [min, max).
 function random_int(min, max) {
 	min = Math.ceil(min);
@@ -39,15 +42,13 @@ function shuffle(array) {
 	}
 }
 
-// To speed the game up make the 60 a much smaller value.
 function phase_secs(context) {
-	return 3*game_duration.mins[context.phase];	// TOODO: revert this
-//	return 60*game_duration.mins[context.phase];
+	return 60*game_duration.mins[context.phase];
 }
 
 function update_progress(context) {
-	if (context.value < 100) {
-		context.value += 1;
+	if (context.value < 100 - step_by) {
+		context.value += step_by;
 		$(".progress-bar").css("width", context.value + "%");
 		setTimeout(update_progress, context.interval, context);
 	} else {
@@ -76,7 +77,7 @@ function random_pic() {
 }
 
 function begin(context, started_phase1) {
-	let elapsed = (new Date().getTime() - context.start)/1000;
+	let elapsed = ((new Date().getTime() - context.start)/1000) * step_by;
 	let duration = phase_secs(context);
 	let can_proceed = ((context.phase == 1 || context.phase == 2) && context.is_action) || // i.e. we were resting
 					((context.phase != 1 && context.phase != 2));
@@ -129,7 +130,7 @@ function begin(context, started_phase1) {
 			$(".progress-bar").attr("class", "progress-bar bg-success");
 
 			let secs = 5 + Math.random()*(phase_secs(context) - 5);
-			console.log("win_secs " + secs);
+			//console.log("win_secs " + secs);
 			duration = secs*1000*phases[context.phase].speed;
 			context.interval = duration/100;
 			context.value = 0;
@@ -161,6 +162,7 @@ function start_game() {
 
 	picker = document.getElementById("probability");
 	win_probability = probability[picker.selectedIndex].percent/100;
+	//console.log("win_probability = " + win_probability);
 
 	$(".progress-bar").attr("class", "progress-bar bg-warning");
 
