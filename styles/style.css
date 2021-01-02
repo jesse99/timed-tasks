@@ -17,3 +17,19 @@ select, button {
 	height: 15px;
 }
 
+.header {
+    width: 100%;
+    height: 10vh;
+}
+
+.dialog {
+    width: 100%;
+    height: 15vh;
+}
+
+.pic {
+    width: 100%;
+    height: 75vh;
+	object-fit: contain;
+	padding-bottom: 15px;
+}

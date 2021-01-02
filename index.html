@@ -17,8 +17,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-		<h2 id="title">title</h2>
-		<div class="spacer"></div>
+		<div class="header">
+			<h2 id="title">title</h2>
+			<div class="spacer"></div>
+		</div>
 
 		<div class="container" id="intro">
 			<div class="row" id="instructions">stuff</div>
@@ -48,24 +50,28 @@
 		</div>
 
 		<div class="container" id="game">
-			<div class="row">
-				<div class="col" id="label">task label</div>
-			</div>
-			<div class="spacer"></div>
-			
-			<div class="row">
-				<div class="col">
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" 
-							aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+			<div class="dialog">
+				<div class="row">
+					<div class="col" id="label">task label</div>
+				</div>
+				<div class="spacer"></div>
+				
+				<div class="row">
+					<div class="col">
+						<div class="progress">
+							<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" 
+								aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+						</div>
 					</div>
 				</div>
+				<div class="spacer"></div>
+	
+				<div class="row">
+					<div class="col" id="sublabel">a sublabel</div>
+				</div>
 			</div>
-			<div class="spacer"></div>
 
-			<div class="row">
-				<div class="col" id="sublabel">a sublabel</div>
-			</div>
+			<img class="pic" src='pics/WEBSITE70-281x434.jpg'/>
 		</div>
 	</body>
 </html>
