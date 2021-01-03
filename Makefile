@@ -37,5 +37,7 @@ package:
 	@cp -R scripts web-site
 	@cp -R styles web-site
 	@cp -R images web-site
+	@cp -R pics web-site
+	@cp -R lost-pics web-site
 	@scp -P 65002 -r web-site/* u506882013@213.190.6.43:public_html/
 	@echo 'record the password in private-data.js'
