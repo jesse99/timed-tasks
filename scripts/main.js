@@ -6,7 +6,7 @@ var game_duration = undefined;
 var win_probability = undefined;
 var pic_index = 0;
 
-// Make this larger to speed the game up.
+// Make this larger to speed the game up. 10 makes it very fast.
 const step_by = 1;
 
 // Returns a number in [min, max).
