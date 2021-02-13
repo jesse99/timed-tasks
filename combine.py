@@ -1,7 +1,7 @@
 # Used to replace the following line:
 #    <script src="data.js"></script>
 # in the input file with the contents of a second file.
-# Usage is `python3 input-file seond-file`.
+# Usage is `python3 input-file second-file`.
 import re, sys
 
 if len(sys.argv) != 3:
