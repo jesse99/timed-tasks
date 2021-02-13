@@ -27,6 +27,8 @@ encrypt:
 #    can use: <meta http-equiv="Cache-control" content="No-Cache">
 #    or maybe change an etag?
 #    or just need to wait a few mins for hosting service to update?
+# cache-manager on Hostinger does have a purge option
+# looks like there can be issues when file list is too large (html gets truncated)
 .PHONY: package
 package: 
 	@python3 combine.py index.html private-data.js
