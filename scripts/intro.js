@@ -2,6 +2,10 @@
 /* eslint no-console: "warn" */
 "use strict";
 
+/* this is now obsolete */
+
+var mode = undefined;
+
 function hash_str(str) {
 	const utf8 = new TextEncoder().encode(str);
 	return crypto.subtle.digest("SHA-256", utf8).then((hashBuffer) => {
@@ -13,6 +17,17 @@ function hash_str(str) {
 	});
 }
 
+function enable_game() {
+	console.log("mode is " + mode);
+	var view = document.querySelector("#password-view");
+	view.style.display = "none";
+	
+	view = document.querySelector("#game-view");
+	view.style.removeProperty("padding-top");
+	view.style.removeProperty("padding-bottom");
+	view.style.display = "block";
+}
+
 function on_keydown(event) {
 	let input = document.querySelector("#password-field");
 	let err = document.querySelector("#password-error");
@@ -22,21 +37,19 @@ function on_keydown(event) {
 	} else {
 		hash_str(input.value).then((hash) => {
 			if (hash == "1f9d3ef8a19203b1fbd88138f9ddec3a82484e4ae2191b90fadd24b84236f73e") {
-				/* TODO: can we stash a custom value in window to communicate state? */
-				localStorage.setItem("timed_task", "main");
-				window.location.href = "./main.html";
+				mode = "standard";
+				enable_game();
 			} else if (hash == "314e5ab0fcd04c334e6ac8c21153c5390f0ba2aa0903986fd5d74f3585942221") {
-				localStorage.setItem("timed_task", input.password);
-				window.location.href = "./main.html";
+				mode = input.value;
+				enable_game();
 			} else if (hash == "b812289b22ecbbdab45151fa99963ca03f5dc67d6a382bbb161126dfdff1b05f") {
-				localStorage.setItem("timed_task", input.password);
-				window.location.href = "./main.html";
+				mode = input.value;
+				enable_game();
 			} else {
 				err.innerHTML = "incorrect";
 				console.log("password: " + input.value);
 				console.log("hash: " + hash);
 			}
-			window.location.search = input.value;
 		});
 	}
 }
