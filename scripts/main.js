@@ -7,7 +7,7 @@ var win_probability = undefined;
 var pic_index = 0;
 
 // Make this larger to speed the game up. 10 makes it very fast.
-const step_by = 1;
+const step_by = 8;
 
 // Returns a number in [min, max).
 function random_int(min, max) {
@@ -185,6 +185,7 @@ function start_game() {
 
 window.addEventListener("DOMContentLoaded", function(){
 	// selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+	console.log("task: " + window.location.search);
 	shuffle(pictures);
 	window.parent.document.title = settings.window_title;
 	let wtitle = document.querySelector("title");

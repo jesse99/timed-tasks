@@ -31,6 +31,7 @@ encrypt:
 # looks like there can be issues when file list is too large (html gets truncated)
 .PHONY: package
 package: 
+	@echo 'update pics.js as necessary'
 	@python3 combine.py index.html private-data.js
 	@python3 encrypt.py combined.html
 	@rm -rf web-site
