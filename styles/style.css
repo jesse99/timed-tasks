@@ -1,3 +1,24 @@
+body {
+	/* These are reset once we switch to the game view. */
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #eee;
+}
+
+#password-view {
+	max-width: 430px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+#game-view {
+	display: none;
+}
+
+#password-error {
+	color: red;
+}
+
 #title {
 	text-align: center;
 }
