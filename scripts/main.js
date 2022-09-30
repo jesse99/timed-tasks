@@ -238,6 +238,11 @@ function enable_game() {
 	view.style.removeProperty("padding-bottom");
 	view.style.display = "block";
 	
+	if (mode == "custom") {
+		settings = custom_settings;
+		tasks = custom_tasks;
+	}
+	
 	init_game();
 }
 
@@ -249,14 +254,14 @@ function on_keydown(event) {
 		err.innerHTML = "";
 	} else {
 		hash_str(input.value).then((hash) => {
-			if (hash == "1f9d3ef8a19203b1fbd88138f9ddec3a82484e4ae2191b90fadd24b84236f73e") {
+			if (hash == "fc2efd7036582a0827d74e346366df1c1330d284f94d0db97e252aff1efdf1fa") {
 				mode = "standard";
 				enable_game();
 			} else if (hash == "314e5ab0fcd04c334e6ac8c21153c5390f0ba2aa0903986fd5d74f3585942221") {
-				mode = input.value;
+				mode = "custom";
 				enable_game();
 			} else if (hash == "b812289b22ecbbdab45151fa99963ca03f5dc67d6a382bbb161126dfdff1b05f") {
-				mode = input.value;
+				mode = "dev";
 				enable_game();
 			} else {
 				err.innerHTML = "incorrect";

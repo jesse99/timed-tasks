@@ -14,12 +14,6 @@ public:
 	@cp public-data.js data.js
 	@open index.html
 	
-# Encrypts the private data file so that it can be uploaded. Descrypt it using:
-# 	openssl enc -d -aes-256-cbc -in private-data.js.enc > private-data.js
-.PHONY: encrypt
-encrypt: 
-	@openssl enc -aes-256-cbc -salt -in private-data.js -out private-data.js.enc
-
 # This uploads all the files that are needed to the hosting service and prompts
 # you for a new password for the web site. It'll also ask for the hosting service
 # password (TK23). WAITING 10 mins seems to be enough.
@@ -33,7 +27,6 @@ encrypt:
 package: 
 	@echo 'update pics.js as necessary'
 	@python3 combine.py index.html private-data.js
-	@python3 encrypt.py combined.html
 	@rm -rf web-site
 	@mkdir web-site
 	@cp combined-protected.html web-site/index.html
