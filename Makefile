@@ -21,15 +21,13 @@ public:
 #
 # It works by using https://www.maxlaumeister.com/pagecrypt to create a password
 # protected all in one file that can be uploaded to a web hosting service.
-# TODO: 
-# looks like there can be issues when file list is too large (html gets truncated)
 .PHONY: package
 package: 
 	@echo 'update pics.js and pics_custom.js as necessary'
-	@python3 combine.py index.html private-data.js
 	@rm -rf web-site
 	@mkdir web-site
-	@cp combined-protected.html web-site/index.html
+	@cp -R private-data.js web-site
+	@cp -R index.html web-site
 	@cp -R scripts web-site
 	@cp -R styles web-site
 	@cp -R images web-site
