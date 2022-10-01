@@ -241,6 +241,7 @@ function enable_game() {
 	if (mode == "custom") {
 		settings = custom_settings;
 		tasks = custom_tasks;
+		pictures = custom_pictures;
 	}
 	
 	init_game();

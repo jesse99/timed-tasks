@@ -25,7 +25,7 @@ public:
 # looks like there can be issues when file list is too large (html gets truncated)
 .PHONY: package
 package: 
-	@echo 'update pics.js as necessary'
+	@echo 'update pics.js and pics_custom.js as necessary'
 	@python3 combine.py index.html private-data.js
 	@rm -rf web-site
 	@mkdir web-site
@@ -34,6 +34,7 @@ package:
 	@cp -R styles web-site
 	@cp -R images web-site
 	@cp -R pics web-site
+	@cp -R pics-custom web-site
 	@cp -R lost-pics web-site
 	@scp -P 65002 -r web-site/* u506882013@213.190.6.43:public_html/
-	@echo 'record the password in private-data.js'
+	@echo 'record the password in current-notes'
