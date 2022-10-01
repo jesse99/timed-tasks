@@ -9,7 +9,7 @@ var won_pic = undefined;
 var pic_index = 0;
 
 // Make this larger to speed the game up. 10 makes it very fast.
-const step_by = 8;
+var step_by = 1;
 
 // Returns a number in [min, max).
 function random_int(min, max) {
@@ -202,7 +202,6 @@ function start_game() {
 
 function init_game() {
 	// selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
-	console.log("task: " + window.location.search);
 	shuffle(pictures);
 	window.parent.document.title = settings.window_title;
 	let wtitle = document.querySelector("title");
@@ -225,6 +224,7 @@ function init_game() {
 		let option = picker.options[i];
 		option.textContent = probability[i].title;	
 	}
+	picker.selectedIndex = 1;
 	
 	let section = document.querySelector("#game");
 	section.hidden = true;
@@ -234,7 +234,6 @@ function init_game() {
 }
 
 function enable_game() {
-	console.log("mode is " + mode);
 	var view = document.querySelector("#password-view");
 	view.style.display = "none";
 	
@@ -247,6 +246,7 @@ function enable_game() {
 		settings = custom_settings;
 		tasks = custom_tasks;
 		pictures = custom_pictures;
+		lost_text = custom_lost_text;
 		won_pic = "pics-finished/blood.png";
 	}
 	
@@ -267,13 +267,18 @@ function on_keydown(event) {
 			} else if (hash == "314e5ab0fcd04c334e6ac8c21153c5390f0ba2aa0903986fd5d74f3585942221") {
 				mode = "custom";
 				enable_game();
-			} else if (hash == "b812289b22ecbbdab45151fa99963ca03f5dc67d6a382bbb161126dfdff1b05f") {
-				mode = "dev";
+			} else if (hash == "209fbfd8490fdaf950a0f011a03667c5aa5d13cacdc9c6cfbd0231d39a47084e") {
+				mode = "standard";
+				step_by = 8;
+				enable_game();
+			} else if (hash == "dadde2fa734666f679662957d3f4daefb725196901cec0c31c388920de3c57f6") {
+				mode = "custom";
+				step_by = 8;
 				enable_game();
 			} else {
 				err.innerHTML = "incorrect";
-				console.log("password: " + input.value);
-				console.log("hash: " + hash);
+				//console.log("password: " + input.value);
+				//console.log("hash: " + hash);
 			}
 		});
 	}
