@@ -5,6 +5,7 @@
 var mode = undefined;
 var game_duration = undefined;
 var win_probability = undefined;
+var won_pic = undefined;
 var pic_index = 0;
 
 // Make this larger to speed the game up. 10 makes it very fast.
@@ -147,6 +148,10 @@ function begin(context, started_phase1) {
 			context.interval = duration/100;
 			context.value = 0;
 
+			if (won_pic) {
+				$("#picture").attr("src", won_pic);
+			}
+
 			context.phase += 1;
 			//console.log("now on phase " + context.phase);
 			setTimeout(update_progress, context.interval, context);
@@ -157,7 +162,7 @@ function begin(context, started_phase1) {
 			let i = random_int(0, lost_text.length);
 			sublbl.textContent = lost_text[i];
 		
-			$("#picture").attr("src", "lost-pics/one.jpg");
+			$("#picture").attr("src", "pics-finished/lost.jpg");
 		}
 	}
 }
@@ -242,6 +247,7 @@ function enable_game() {
 		settings = custom_settings;
 		tasks = custom_tasks;
 		pictures = custom_pictures;
+		won_pic = "pics-finished/blood.png";
 	}
 	
 	init_game();
