@@ -5,6 +5,7 @@
 var mode = undefined;
 var game_duration = undefined;
 var win_probability = undefined;
+var won_text = undefined;
 var won_pic = undefined;
 var pic_index = 0;
 
@@ -137,9 +138,6 @@ function begin(context, started_phase1) {
 		//console.log("win_probability " + win_probability);
 		if (x <= win_probability) {
 			// player won
-			let sublbl = document.querySelector("#sublabel");
-			sublbl.textContent = phases[context.phase].sublabel;
-
 			$(".progress-bar").attr("class", "progress-bar bg-success");
 
 			let secs = 5 + Math.random()*(phase_secs(context) - 5);
@@ -148,8 +146,12 @@ function begin(context, started_phase1) {
 			context.interval = duration/100;
 			context.value = 0;
 
+			let sublbl = document.querySelector("#sublabel");
 			if (won_pic) {
 				$("#picture").attr("src", won_pic);
+				sublbl.textContent = won_text;
+			} else {
+				sublbl.textContent = phases[context.phase].sublabel;
 			}
 
 			context.phase += 1;
@@ -247,6 +249,9 @@ function enable_game() {
 		tasks = custom_tasks;
 		pictures = custom_pictures;
 		lost_text = custom_lost_text;
+		tasks = custom_tasks;
+		rest = custom_rest;
+		won_text = custom_won_text;
 		won_pic = "pics-finished/blood.png";
 	}
 	
@@ -261,7 +266,7 @@ function on_keydown(event) {
 		err.innerHTML = "";
 	} else {
 		hash_str(input.value).then((hash) => {
-			if (hash == "fc2efd7036582a0827d74e346366df1c1330d284f94d0db97e252aff1efdf1fa") {
+			if (hash == "356c59da3868f53f59b1b185272c16a9a69bef25a5392572628c015894225158") {
 				mode = "standard";
 				enable_game();
 			} else if (hash == "314e5ab0fcd04c334e6ac8c21153c5390f0ba2aa0903986fd5d74f3585942221") {
@@ -277,8 +282,8 @@ function on_keydown(event) {
 				enable_game();
 			} else {
 				err.innerHTML = "incorrect";
-				//console.log("password: " + input.value);
-				//console.log("hash: " + hash);
+				console.log("password: " + input.value);
+				console.log("hash: " + hash);
 			}
 		});
 	}

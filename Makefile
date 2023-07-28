@@ -14,13 +14,15 @@ public:
 	@cp public-data.js data.js
 	@open index.html
 	
-# This uploads all the files that are needed to the hosting service and prompts
-# you for a new password for the web site. It'll also ask for the hosting service
-# password (TK23). WAITING 10 mins seems to be enough.
-# Be sure to update password in private-data.js.
-#
-# It works by using https://www.maxlaumeister.com/pagecrypt to create a password
-# protected all in one file that can be uploaded to a web hosting service.
+# To update the password:
+# 1) Do `make public` and record the password hash using the console window.
+# 2) Add the new password to main.js.
+# 3) Verify that the new password works with `make public`.
+# 4) Add the new password to private-data.js.
+# 5) Do `make package`.
+# 6) Wait 10 minutes,
+# 7) Use a browser (or phone) to verify that the new password works with the web site.
+# 8) Commit the new code.
 .PHONY: package
 package: 
 	@echo 'update pics.js and pics_custom.js as necessary'
@@ -34,5 +36,5 @@ package:
 	@cp -R pics web-site
 	@cp -R pics-custom web-site
 	@cp -R pics-finished web-site
-	@scp -P 65002 -r web-site/* u506882013@213.190.6.43:public_html/
+	scp -P 65002 -r web-site/* u506882013@212.1.209.147:public_html/
 	@echo 'record the password in current-notes'
