@@ -266,7 +266,7 @@ function on_keydown(event) {
 		err.innerHTML = "";
 	} else {
 		hash_str(input.value).then((hash) => {
-			if (hash == "356c59da3868f53f59b1b185272c16a9a69bef25a5392572628c015894225158") {
+			if (hash == "24bafc1ab8957d531f10f72a57be1608a215800238ea377f3ba25e57273ea3fa") {
 				mode = "standard";
 				enable_game();
 			} else if (hash == "314e5ab0fcd04c334e6ac8c21153c5390f0ba2aa0903986fd5d74f3585942221") {
