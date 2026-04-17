@@ -1,6 +1,5 @@
 all: private
 
-
 .PHONY: private
 private: 
 	@eslint private-data.js
